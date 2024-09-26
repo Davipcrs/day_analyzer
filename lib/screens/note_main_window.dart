@@ -39,24 +39,59 @@ class NoteMainWindow extends ConsumerWidget {
     //                  },
     //
     //}
-    List<NoteModel> noteItems = [NoteModel()];
-    return ListView.builder(
-      itemCount: 3,
-      itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.onInverseSurface,
-              borderRadius: BorderRadius.circular(12),
+    List<NoteModel> noteItems = [NoteModel(), NoteModel(), NoteModel()];
+    if (MediaQuery.of(context).size.width < 480) {
+      return ListView.builder(
+        itemCount: 7,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.only(
+                top: 8.0, right: 24.0, left: 24.0, bottom: 8.0),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.onInverseSurface,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: DayItem(
+                noteItems: noteItems,
+                date: "date",
+              ),
             ),
-            child: DayItem(
-              noteItems: noteItems,
-              date: "date",
+          );
+        },
+      );
+    } else {
+      return CustomScrollView(
+        slivers: [
+          SliverGrid(
+            delegate: SliverChildBuilderDelegate(
+              childCount: 7,
+              (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.only(
+                      top: 8.0, right: 8.0, left: 8.0, bottom: 8.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.onInverseSurface,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: DayItem(
+                      noteItems: noteItems,
+                      date: "date",
+                    ),
+                  ),
+                );
+              },
             ),
-          ),
-        );
-      },
-    );
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 360,
+              mainAxisExtent: 600,
+              mainAxisSpacing: 10.0,
+              crossAxisSpacing: 10.0,
+            ),
+          )
+        ],
+      );
+    }
   }
 }

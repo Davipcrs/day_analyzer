@@ -13,10 +13,19 @@ class DayItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    NoteModel note = NoteModel();
-    note.create(
+    noteItems[0].create(
         id_note: 1,
         str_text: "oafbefjoawbdo",
+        str_md_text: "",
+        bool_complete: false);
+    noteItems[1].create(
+        id_note: 1,
+        str_text: "ABAoafbefjoawbdo",
+        str_md_text: "",
+        bool_complete: false);
+    noteItems[2].create(
+        id_note: 1,
+        str_text: "ABOoafbefjoawbdo",
         str_md_text: "",
         bool_complete: false);
     return Container(
@@ -36,7 +45,7 @@ class DayItem extends StatelessWidget {
                         color: Theme.of(context).colorScheme.surfaceContainer,
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      child: NoteItem(noteData: note)),
+                      child: NoteItem(noteData: noteItems[index])),
                 );
               },
             ),

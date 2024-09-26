@@ -26,7 +26,7 @@ class NoteModel {
     this.bool_complete = bool_complete;
   }
 
-  void convertToNode(Note note) {
+  void convertToNote(Note note) {
     DateTime? auxDate = DateTime.tryParse(note.strDate);
   }
 
