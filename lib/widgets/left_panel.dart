@@ -8,7 +8,7 @@ Widget customLeftPanel(BuildContext context) {
       DateFormat('dd/MM').format(today.add(const Duration(days: 7)));
   return SafeArea(
     child: Container(
-      color: Theme.of(context).colorScheme.onSurface,
+      color: Theme.of(context).colorScheme.onInverseSurface,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,

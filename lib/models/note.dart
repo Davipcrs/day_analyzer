@@ -47,5 +47,13 @@ class NoteModel {
         boolCompleted: bool_complete);
   }
 
-  convertToAdd() {}
+  CreateNoteRequest convertToAdd() {
+    String str_date = date!.toIso8601String();
+
+    return CreateNoteRequest(
+        strText: str_text,
+        strMdText: str_md_text,
+        strDate: str_date,
+        boolCompleted: bool_complete);
+  }
 }
