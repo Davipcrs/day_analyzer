@@ -28,6 +28,13 @@ class NoteModel {
 
   void convertToNote(Note note) {
     DateTime? auxDate = DateTime.tryParse(note.strDate);
+
+    create(
+        id_note: note.idNote,
+        str_text: note.strText,
+        str_md_text: note.strMdText,
+        bool_complete: note.boolCompleted,
+        date: auxDate);
   }
 
   Note convertToGrpc() {
