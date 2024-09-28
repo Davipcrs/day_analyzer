@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 Widget customLeftPanel(BuildContext context) {
@@ -49,7 +50,9 @@ Widget customLeftPanel(BuildContext context) {
             child: Text("Refresh"),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              context.go('/add');
+            },
             child: Text("Novo Item"),
           )
         ],
