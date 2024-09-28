@@ -7,7 +7,7 @@ service NoteService {
     rpc CreateNote (CreateNoteRequest) returns (IdResponse);
     
     // Retrieves a note by ID
-    rpc GetNote (GetNoteRequest) returns (NoteResponse);
+    rpc GetNote (GetNoteRequest) returns (Note);
     
     // Retrieves all notes
     rpc GetAllNotes (empty) returns (AllNotesResponse);

@@ -25,10 +25,10 @@ class NoteServiceClient extends $grpc.Client {
       '/note.NoteService/CreateNote',
       ($0.CreateNoteRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.IdResponse.fromBuffer(value));
-  static final _$getNote = $grpc.ClientMethod<$0.GetNoteRequest, $0.NoteResponse>(
+  static final _$getNote = $grpc.ClientMethod<$0.GetNoteRequest, $0.Note>(
       '/note.NoteService/GetNote',
       ($0.GetNoteRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.NoteResponse.fromBuffer(value));
+      ($core.List<$core.int> value) => $0.Note.fromBuffer(value));
   static final _$getAllNotes = $grpc.ClientMethod<$0.empty, $0.AllNotesResponse>(
       '/note.NoteService/GetAllNotes',
       ($0.empty value) => value.writeToBuffer(),
@@ -60,7 +60,7 @@ class NoteServiceClient extends $grpc.Client {
     return $createUnaryCall(_$createNote, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.NoteResponse> getNote($0.GetNoteRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$0.Note> getNote($0.GetNoteRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getNote, request, options: options);
   }
 
@@ -97,13 +97,13 @@ abstract class NoteServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.CreateNoteRequest.fromBuffer(value),
         ($0.IdResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.GetNoteRequest, $0.NoteResponse>(
+    $addMethod($grpc.ServiceMethod<$0.GetNoteRequest, $0.Note>(
         'GetNote',
         getNote_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $0.GetNoteRequest.fromBuffer(value),
-        ($0.NoteResponse value) => value.writeToBuffer()));
+        ($0.Note value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.empty, $0.AllNotesResponse>(
         'GetAllNotes',
         getAllNotes_Pre,
@@ -145,7 +145,7 @@ abstract class NoteServiceBase extends $grpc.Service {
     return createNote(call, await request);
   }
 
-  $async.Future<$0.NoteResponse> getNote_Pre($grpc.ServiceCall call, $async.Future<$0.GetNoteRequest> request) async {
+  $async.Future<$0.Note> getNote_Pre($grpc.ServiceCall call, $async.Future<$0.GetNoteRequest> request) async {
     return getNote(call, await request);
   }
 
@@ -170,7 +170,7 @@ abstract class NoteServiceBase extends $grpc.Service {
   }
 
   $async.Future<$0.IdResponse> createNote($grpc.ServiceCall call, $0.CreateNoteRequest request);
-  $async.Future<$0.NoteResponse> getNote($grpc.ServiceCall call, $0.GetNoteRequest request);
+  $async.Future<$0.Note> getNote($grpc.ServiceCall call, $0.GetNoteRequest request);
   $async.Future<$0.AllNotesResponse> getAllNotes($grpc.ServiceCall call, $0.empty request);
   $async.Future<$0.AllNotesResponse> getNoteByDay($grpc.ServiceCall call, $0.DayRequest request);
   $async.Future<$0.IdResponse> updateNote($grpc.ServiceCall call, $0.UpdateNoteRequest request);
