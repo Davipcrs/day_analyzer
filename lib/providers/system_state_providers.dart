@@ -48,7 +48,7 @@ final notesByWeekStartDayProvider = Provider(
             }
           }
         }
-        print(notesByDayMap);
+        //print(notesByDayMap);
         return notesByDayMap;
       },
     );

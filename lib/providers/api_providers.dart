@@ -16,7 +16,7 @@ final apiHost = StateProvider(
     if (kIsWeb) {
       return "";
     } else {
-      return "localhost";
+      return "192.168.0.8";
     }
   },
 );

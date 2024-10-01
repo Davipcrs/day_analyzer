@@ -46,3 +46,15 @@ class GetNotesByDayNotifier extends AutoDisposeAsyncNotifier<void> {
     return await ref.watch(apiServicesProvider).getNoteByDay(date);
   }
 }
+
+class GetAllNotesNotifier extends AutoDisposeAsyncNotifier<void> {
+  Future<List<NoteModel>>? allNotes;
+  @override
+  build() {
+    getAllNotes();
+  }
+
+  Future<List<NoteModel>> getAllNotes() async {
+    return await ref.watch(apiServicesProvider).getAllNotes();
+  }
+}

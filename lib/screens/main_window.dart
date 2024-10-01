@@ -14,7 +14,7 @@ class MainWindow extends ConsumerWidget {
     dynamic appBar;
     dynamic body = const SafeArea(child: NoteMainWindow());
     if (MediaQuery.of(context).size.width < 480) {
-      appBar = customAppBar(context);
+      appBar = customAppBar(context, ref);
     } else {
       body = Row(
         mainAxisAlignment: MainAxisAlignment.start,
