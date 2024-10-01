@@ -32,7 +32,7 @@ message empty{
 
 message UpdateBoolRequest { 
     int32 id_note = 1;
-    bool bool_complete = 2;
+    bool bool_completed = 2;
 }
 
 message Note {

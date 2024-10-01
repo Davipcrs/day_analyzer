@@ -9,11 +9,11 @@ class NoteModel {
   late bool bool_complete;
 
   void create(
-      {required id_note,
-      required str_text,
-      required str_md_text,
-      date,
-      required bool_complete}) {
+      {required int id_note,
+      required String str_text,
+      required String str_md_text,
+      DateTime? date,
+      required bool bool_complete}) {
     this.id_note = id_note;
     this.str_text = str_text;
     this.str_md_text = str_md_text;

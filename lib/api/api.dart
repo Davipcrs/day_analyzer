@@ -60,7 +60,7 @@ class ApiRequests {
   }
 
   updateBool(int id, bool boolean) {
-    noteStub!.updateBool(UpdateBoolRequest(idNote: id, boolComplete: boolean));
+    noteStub!.updateBool(UpdateBoolRequest(idNote: id, boolCompleted: boolean));
   }
 
   updateNote(NoteModel note) {

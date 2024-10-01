@@ -27,10 +27,15 @@ class _DayItemState extends ConsumerState<DayItem> {
   Widget build(BuildContext context) {
     return Container(
       // Add Day Text
-      constraints: const BoxConstraints(maxHeight: 120 * 5.0, minHeight: 120),
-      height: (120 * widget.noteItems.length).toDouble(),
+      constraints: const BoxConstraints(
+          maxHeight: (120 * 5.0) + 20, minHeight: 120 + 20),
+      height: ((120 * widget.noteItems.length) + 20).toDouble(),
       child: CustomScrollView(
-        slivers: [
+        slivers: <Widget>[
+          SliverToBoxAdapter(
+            child: Center(
+                child: Text(widget.date.toIso8601String().split('T')[0])),
+          ),
           SliverGrid(
             delegate: SliverChildBuilderDelegate(
               childCount: widget.noteItems.length,

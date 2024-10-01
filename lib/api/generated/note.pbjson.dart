@@ -27,14 +27,14 @@ const UpdateBoolRequest$json = {
   '1': 'UpdateBoolRequest',
   '2': [
     {'1': 'id_note', '3': 1, '4': 1, '5': 5, '10': 'idNote'},
-    {'1': 'bool_complete', '3': 2, '4': 1, '5': 8, '10': 'boolComplete'},
+    {'1': 'bool_completed', '3': 2, '4': 1, '5': 8, '10': 'boolCompleted'},
   ],
 };
 
 /// Descriptor for `UpdateBoolRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List updateBoolRequestDescriptor = $convert.base64Decode(
-    'ChFVcGRhdGVCb29sUmVxdWVzdBIXCgdpZF9ub3RlGAEgASgFUgZpZE5vdGUSIwoNYm9vbF9jb2'
-    '1wbGV0ZRgCIAEoCFIMYm9vbENvbXBsZXRl');
+    'ChFVcGRhdGVCb29sUmVxdWVzdBIXCgdpZF9ub3RlGAEgASgFUgZpZE5vdGUSJQoOYm9vbF9jb2'
+    '1wbGV0ZWQYAiABKAhSDWJvb2xDb21wbGV0ZWQ=');
 
 @$core.Deprecated('Use noteDescriptor instead')
 const Note$json = {

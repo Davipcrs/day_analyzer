@@ -48,14 +48,14 @@ class empty extends $pb.GeneratedMessage {
 class UpdateBoolRequest extends $pb.GeneratedMessage {
   factory UpdateBoolRequest({
     $core.int? idNote,
-    $core.bool? boolComplete,
+    $core.bool? boolCompleted,
   }) {
     final $result = create();
     if (idNote != null) {
       $result.idNote = idNote;
     }
-    if (boolComplete != null) {
-      $result.boolComplete = boolComplete;
+    if (boolCompleted != null) {
+      $result.boolCompleted = boolCompleted;
     }
     return $result;
   }
@@ -65,7 +65,7 @@ class UpdateBoolRequest extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UpdateBoolRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'note'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'idNote', $pb.PbFieldType.O3)
-    ..aOB(2, _omitFieldNames ? '' : 'boolComplete')
+    ..aOB(2, _omitFieldNames ? '' : 'boolCompleted')
     ..hasRequiredFields = false
   ;
 
@@ -100,13 +100,13 @@ class UpdateBoolRequest extends $pb.GeneratedMessage {
   void clearIdNote() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.bool get boolComplete => $_getBF(1);
+  $core.bool get boolCompleted => $_getBF(1);
   @$pb.TagNumber(2)
-  set boolComplete($core.bool v) { $_setBool(1, v); }
+  set boolCompleted($core.bool v) { $_setBool(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasBoolComplete() => $_has(1);
+  $core.bool hasBoolCompleted() => $_has(1);
   @$pb.TagNumber(2)
-  void clearBoolComplete() => clearField(2);
+  void clearBoolCompleted() => clearField(2);
 }
 
 class Note extends $pb.GeneratedMessage {

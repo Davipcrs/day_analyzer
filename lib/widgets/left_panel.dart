@@ -1,3 +1,4 @@
+import 'package:day_analyzer/providers/note_providers.dart';
 import 'package:day_analyzer/providers/system_state_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,21 +22,17 @@ class _CustomLeftPanelState extends ConsumerState<CustomLeftPanel> {
       if (aux == 'left') {
         today = today.add(const Duration(days: -7));
         ref.invalidate(startWeekProvider);
-        ref.invalidate(staticWeekStartDayProvider);
+        ref.read(staticWeekStartDayProvider.notifier).state =
+            ref.watch(startWeekProvider.notifier).setWeekStart(today);
+        ref.invalidate(notesByWeekStartDayProvider);
       } else {
         today = today.add(const Duration(days: 7));
         ref.invalidate(startWeekProvider);
-        ref.invalidate(staticWeekStartDayProvider);
+        ref.read(staticWeekStartDayProvider.notifier).state =
+            ref.watch(startWeekProvider.notifier).setWeekStart(today);
+        ref.invalidate(notesByWeekStartDayProvider);
       }
     });
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-
-    //ref.read(staticWeekStartDayProvider.notifier).state = startWeek;
   }
 
   @override
@@ -87,7 +84,11 @@ class _CustomLeftPanelState extends ConsumerState<CustomLeftPanel> {
               child: const Text("Configurações"),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                ref.invalidate(apiGetAllNotesProvider);
+                ref.invalidate(apiGetNoteByIdProvider);
+                ref.invalidate(apiGetNotesByDayProvider);
+              },
               child: const Text("Refresh"),
             ),
             TextButton(
@@ -102,7 +103,7 @@ class _CustomLeftPanelState extends ConsumerState<CustomLeftPanel> {
     );
   }
 }
-
+/*
 Widget customLeftPanel(BuildContext context, WidgetRef ref) {
   DateTime today = DateTime.now();
   DateTime startWeek =
@@ -167,3 +168,4 @@ Widget customLeftPanel(BuildContext context, WidgetRef ref) {
     ),
   );
 }
+*/

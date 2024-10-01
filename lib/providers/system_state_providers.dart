@@ -25,15 +25,15 @@ final staticWeekStartDayProvider = StateProvider(
       ),
 );
 
-final notesByWeekStartDayProvider = FutureProvider(
-  (ref) async {
+final notesByWeekStartDayProvider = Provider(
+  (ref) {
     AsyncValue notes = ref.watch(apiGetAllNotesProvider);
 
     return notes.whenData(
       (allNotes) {
         var weekStart = ref.watch(staticWeekStartDayProvider);
         Map<int, List<NoteModel>> notesByDayMap = {};
-        for (var index = 0; index < 7; index < 7) {
+        for (var index = 0; index < 7; index = index + 1) {
           List<NoteModel> auxiliar = List.empty(growable: true);
           notesByDayMap[index] = auxiliar;
           for (var allNoteIndex = 0;
@@ -48,6 +48,7 @@ final notesByWeekStartDayProvider = FutureProvider(
             }
           }
         }
+        print(notesByDayMap);
         return notesByDayMap;
       },
     );

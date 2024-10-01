@@ -20,7 +20,7 @@ class _NoteMainWindowState extends ConsumerState<NoteMainWindow> {
     super.initState();
   }
 
-  setData() {
+  setData() async {
     notes = ref.watch(notesByWeekStartDayProvider);
   }
 
