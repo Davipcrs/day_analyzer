@@ -1,16 +1,16 @@
-import 'package:day_analyzer/routes/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mini_utils/mini_utils.dart';
 
-class NoteAddNew extends StatefulWidget {
+class NoteAddNew extends ConsumerStatefulWidget {
   const NoteAddNew({super.key});
 
   @override
-  State<NoteAddNew> createState() => _NoteAddNewState();
+  ConsumerState<NoteAddNew> createState() => _NoteAddNewState();
 }
 
-class _NoteAddNewState extends State<NoteAddNew> {
+class _NoteAddNewState extends ConsumerState<NoteAddNew> {
   TextEditingController mainText = TextEditingController();
   TextEditingController secondaryMDText = TextEditingController();
   DateTime date = DateTime.now();

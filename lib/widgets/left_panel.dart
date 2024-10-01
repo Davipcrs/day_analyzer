@@ -1,12 +1,115 @@
+import 'package:day_analyzer/providers/system_state_providers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
-Widget customLeftPanel(BuildContext context) {
+class CustomLeftPanel extends ConsumerStatefulWidget {
+  const CustomLeftPanel({super.key});
+
+  @override
+  ConsumerState<CustomLeftPanel> createState() => _CustomLeftPanelState();
+}
+
+class _CustomLeftPanelState extends ConsumerState<CustomLeftPanel> {
   DateTime today = DateTime.now();
-  String strToday = DateFormat('dd/MM').format(today);
-  String maxDay =
-      DateFormat('dd/MM').format(today.add(const Duration(days: 7)));
+  DateFormat format = DateFormat('dd/MM');
+  late DateTime startWeek;
+
+  onChangeDate(String aux) {
+    setState(() {
+      if (aux == 'left') {
+        today = today.add(const Duration(days: -7));
+        ref.invalidate(startWeekProvider);
+        ref.invalidate(staticWeekStartDayProvider);
+      } else {
+        today = today.add(const Duration(days: 7));
+        ref.invalidate(startWeekProvider);
+        ref.invalidate(staticWeekStartDayProvider);
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    //ref.read(staticWeekStartDayProvider.notifier).state = startWeek;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    startWeek = ref.watch(startWeekProvider.notifier).setWeekStart(today);
+    String strToday = format.format(startWeek);
+    String maxDay = format.format(startWeek.add(const Duration(days: 7)));
+    return SafeArea(
+      child: Container(
+        color: Theme.of(context).colorScheme.onInverseSurface,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                  onPressed: () {
+                    onChangeDate('left');
+                  },
+                  icon: const Icon(
+                    Icons.arrow_left,
+
+                    //  color: Theme.of(context).colorScheme.primary,
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    '$strToday - $maxDay',
+                    //style:
+                    //    TextStyle(color: Theme.of(context).colorScheme.primary),
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    onChangeDate('right');
+                  },
+                  icon: const Icon(
+                    Icons.arrow_right,
+                    //color: Theme.of(context).colorScheme.primary,
+                  ),
+                )
+              ],
+            ),
+            TextButton(
+              onPressed: () {},
+              child: const Text("Configurações"),
+            ),
+            TextButton(
+              onPressed: () {},
+              child: const Text("Refresh"),
+            ),
+            TextButton(
+              onPressed: () {
+                context.go('/add');
+              },
+              child: const Text("Novo Item"),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+Widget customLeftPanel(BuildContext context, WidgetRef ref) {
+  DateTime today = DateTime.now();
+  DateTime startWeek =
+      ref.watch(startWeekProvider.notifier).setWeekStart(today);
+  DateFormat format = DateFormat('dd/MM');
+  String strToday = format.format(startWeek);
+  String maxDay = format.format(startWeek.add(const Duration(days: 7)));
   return SafeArea(
     child: Container(
       color: Theme.of(context).colorScheme.onInverseSurface,
@@ -18,9 +121,13 @@ Widget customLeftPanel(BuildContext context) {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               IconButton(
-                onPressed: () {},
-                icon: Icon(
+                onPressed: () {
+                  ref.invalidate(startWeekProvider);
+                  today = today.add(const Duration(days: -7));
+                },
+                icon: const Icon(
                   Icons.arrow_left,
+
                   //  color: Theme.of(context).colorScheme.primary,
                 ),
               ),
@@ -34,7 +141,7 @@ Widget customLeftPanel(BuildContext context) {
               ),
               IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   Icons.arrow_right,
                   //color: Theme.of(context).colorScheme.primary,
                 ),
@@ -43,17 +150,17 @@ Widget customLeftPanel(BuildContext context) {
           ),
           TextButton(
             onPressed: () {},
-            child: Text("Configurações"),
+            child: const Text("Configurações"),
           ),
           TextButton(
             onPressed: () {},
-            child: Text("Refresh"),
+            child: const Text("Refresh"),
           ),
           TextButton(
             onPressed: () {
               context.go('/add');
             },
-            child: Text("Novo Item"),
+            child: const Text("Novo Item"),
           )
         ],
       ),

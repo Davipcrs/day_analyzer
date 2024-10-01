@@ -36,7 +36,7 @@ class ApiConnection {
       IP_ADDRESS!,
       port: PORT!,
       options: const ChannelOptions(
-        credentials: ChannelCredentials.secure(),
+        credentials: ChannelCredentials.insecure(),
       ),
     );
     return connectionChannel;

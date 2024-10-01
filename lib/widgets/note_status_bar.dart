@@ -1,16 +1,18 @@
 import 'package:day_analyzer/models/note.dart';
+import 'package:day_analyzer/providers/api_providers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class NoteStatusBar extends StatefulWidget {
+class NoteStatusBar extends ConsumerStatefulWidget {
   const NoteStatusBar({super.key, required this.noteData});
 
   final NoteModel noteData;
 
   @override
-  State<NoteStatusBar> createState() => _NoteStatusBarState();
+  ConsumerState<NoteStatusBar> createState() => _NoteStatusBarState();
 }
 
-class _NoteStatusBarState extends State<NoteStatusBar> {
+class _NoteStatusBarState extends ConsumerState<NoteStatusBar> {
   late NoteModel note;
   @override
   void initState() {
@@ -43,6 +45,7 @@ class _NoteStatusBarState extends State<NoteStatusBar> {
           Switch.adaptive(
             value: note.bool_complete,
             onChanged: (value) {
+              ref.watch(apiServicesProvider).updateBool(note.id_note!, value);
               changeCompleteStatusState(value);
               // Create API to change the boolean
             },
