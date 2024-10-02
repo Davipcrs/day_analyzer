@@ -4,6 +4,7 @@
 import 'package:day_analyzer/models/note.dart';
 import 'package:day_analyzer/widgets/note_status_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class NoteItem extends StatelessWidget {
   const NoteItem({super.key, required this.noteData});
@@ -15,6 +16,9 @@ class NoteItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
+        onLongPress: () {
+          context.go('/edit', extra: noteData);
+        },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

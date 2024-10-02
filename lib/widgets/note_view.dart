@@ -1,1 +1,0 @@
-// item for visualizing the note / editting

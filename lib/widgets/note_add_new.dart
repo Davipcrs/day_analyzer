@@ -65,7 +65,8 @@ class _NoteAddNewState extends ConsumerState<NoteAddNew> {
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
                     onPressed: () async {
-                      var newDate = await showDateTimePicker(context: context);
+                      var newDate = await showDateTimePicker(
+                          context: context, initialDate: date);
                       setDate(newDate);
                     },
                     child: Text(
@@ -110,7 +111,8 @@ class _NoteAddNewState extends ConsumerState<NoteAddNew> {
                               id_note: 0,
                               str_text: mainText.text,
                               str_md_text: secondaryMDText.text,
-                              bool_complete: false);
+                              bool_complete: false,
+                              date: date);
                           ref
                               .read(apiCreateNoteProvider.notifier)
                               .addNote(model);

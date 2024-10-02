@@ -48,3 +48,20 @@ AppBar customAppBar(BuildContext context, WidgetRef ref) {
     centerTitle: true,
   );
 }
+
+AppBar customEditAppBar(BuildContext context, WidgetRef ref) {
+  String titleStr = 'Visualizar Nota';
+  if (!ref.watch(isEditReadOnly)) {
+    titleStr = 'Editar Nota';
+  }
+  return AppBar(
+    title: Text(titleStr),
+    actions: [
+      IconButton(
+          onPressed: () {
+            ref.read(isEditReadOnly.notifier).state = false;
+          },
+          icon: const Icon(Icons.lock))
+    ],
+  );
+}

@@ -8,9 +8,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 //    DateTime.now().month, DateTime.now().day - (DateTime.now().weekday) % 7));
 
 final startWeekProvider =
-    NotifierProvider<_setStartWeekNotifier, void>(_setStartWeekNotifier.new);
+    NotifierProvider<_SetStartWeekNotifier, void>(_SetStartWeekNotifier.new);
 
-class _setStartWeekNotifier extends Notifier<void> {
+class _SetStartWeekNotifier extends Notifier<void> {
   @override
   build() {}
 
@@ -54,3 +54,5 @@ final notesByWeekStartDayProvider = Provider(
     );
   },
 );
+
+final isEditReadOnly = StateProvider((ref) => true);

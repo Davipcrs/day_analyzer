@@ -1,5 +1,6 @@
 import 'package:day_analyzer/providers/system_state_providers.dart';
 import 'package:day_analyzer/widgets/day_item.dart';
+import 'package:day_analyzer/widgets/options_mini_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -67,24 +68,35 @@ class _NoteMainWindowState extends ConsumerState<NoteMainWindow> {
                 child: CircularProgressIndicator(),
               ),
           data: (noteMap) {
-            return ListView.builder(
-              itemCount: 7,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.only(
-                      top: 8.0, right: 24.0, left: 24.0, bottom: 8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.onInverseSurface,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: DayItem(
-                      noteItems: noteMap[index]!,
-                      date: startWeek.add(Duration(days: index)),
-                    ),
+            return Column(
+              children: [
+                Center(child: OptionsMiniBar()),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height:
+                      MediaQuery.of(context).size.height - kToolbarHeight - 40,
+                  child: ListView.builder(
+                    itemCount: 7,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(
+                            top: 8.0, right: 24.0, left: 24.0, bottom: 8.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color:
+                                Theme.of(context).colorScheme.onInverseSurface,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: DayItem(
+                            noteItems: noteMap[index]!,
+                            date: startWeek.add(Duration(days: index)),
+                          ),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
+                ),
+              ],
             );
           });
     } else {
