@@ -45,8 +45,8 @@ class _NoteAddNewState extends ConsumerState<NoteAddNew> {
             height: MediaQuery.of(context).size.height * 0.8,
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
                   child: Text('Adicionar Nota'),
                 ),
                 Padding(
@@ -116,6 +116,12 @@ class _NoteAddNewState extends ConsumerState<NoteAddNew> {
                           ref
                               .read(apiCreateNoteProvider.notifier)
                               .addNote(model);
+                          /*
+                          var auxiliar =
+                              ref.watch(allNotesProvider) as List<NoteModel>;
+                          auxiliar.add(model);
+                          ref.read(allNotesProvider.notifier).state = auxiliar;
+                          */
                           context.go('/');
                         },
                         child: const Text('Add'),

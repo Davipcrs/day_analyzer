@@ -28,6 +28,7 @@ final staticWeekStartDayProvider = StateProvider(
 final notesByWeekStartDayProvider = Provider(
   (ref) {
     AsyncValue notes = ref.watch(apiGetAllNotesProvider);
+    // AsyncValue notes = ref.watch(allNotesProvider);
 
     return notes.whenData(
       (allNotes) {

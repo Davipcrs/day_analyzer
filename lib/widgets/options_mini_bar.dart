@@ -13,7 +13,7 @@ class OptionsMiniBar extends ConsumerWidget {
       children: [
         IconButton(
           onPressed: () {
-            context.go('conf');
+            context.go('/conf');
           },
           icon: const Icon(Icons.settings),
         ),

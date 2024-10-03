@@ -11,34 +11,71 @@ class ServerConf extends ConsumerWidget {
     TextEditingController controllerHost = TextEditingController();
     TextEditingController controllerPort = TextEditingController();
     return Scaffold(
-      body: SizedBox.fromSize(
-        size: MediaQuery.of(context).size,
-        child: Column(
-          children: [
-            TextField(
-              decoration: const InputDecoration(hintText: 'insert API server'),
-              controller: controllerHost,
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              color: Theme.of(context).colorScheme.surfaceContainer,
             ),
-            TextField(
-              decoration: const InputDecoration(hintText: 'insert API port'),
-              controller: controllerPort,
+            width: MediaQuery.of(context).size.width * 0.8,
+            height: MediaQuery.of(context).size.height * 0.8,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextField(
+                        decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            hintText: 'Insira o IP do Servidor'),
+                        controller: controllerHost,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextField(
+                        decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            hintText: 'Insira a Porta do Servidor'),
+                        controller: controllerPort,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          context.go('/');
+                        },
+                        child: const Text('Cancel'),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          ref.read(apiHost.notifier).state =
+                              controllerHost.text;
+                          ref.read(apiPorts.notifier).state =
+                              int.parse(controllerPort.text);
+                          context.go('/');
+                        },
+                        child: const Text('OK'),
+                      ),
+                    )
+                  ],
+                ),
+              ],
             ),
-            ElevatedButton(
-              onPressed: () {
-                context.go('/');
-              },
-              child: const Text('Cancel'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                ref.read(apiHost.notifier).state = controllerHost.text;
-                ref.read(apiPorts.notifier).state =
-                    int.parse(controllerPort.text);
-                context.go('/');
-              },
-              child: const Text('OK'),
-            )
-          ],
+          ),
         ),
       ),
     );
