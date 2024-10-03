@@ -80,7 +80,9 @@ class _CustomLeftPanelState extends ConsumerState<CustomLeftPanel> {
               ],
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                context.go('/conf');
+              },
               child: const Text("Configurações"),
             ),
             TextButton(

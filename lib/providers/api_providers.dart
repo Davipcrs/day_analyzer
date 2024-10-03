@@ -16,9 +16,17 @@ final apiHost = StateProvider(
     if (kIsWeb) {
       return "";
     } else {
-      return "192.168.0.8";
+      return "";
     }
   },
 );
-
+final apiPorts = StateProvider(
+  (ref) {
+    if (kIsWeb) {
+      return 50051;
+    } else {
+      return 50051;
+    }
+  },
+);
 final boolNullHost = StateProvider((ref) => true);

@@ -12,7 +12,9 @@ class OptionsMiniBar extends ConsumerWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            context.go('conf');
+          },
           icon: const Icon(Icons.settings),
         ),
         IconButton(

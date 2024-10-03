@@ -2,6 +2,7 @@ import 'package:day_analyzer/models/note.dart';
 import 'package:day_analyzer/screens/main_window.dart';
 import 'package:day_analyzer/widgets/note_add_new.dart';
 import 'package:day_analyzer/widgets/note_edit.dart';
+import 'package:day_analyzer/widgets/server_conf.dart';
 import 'package:go_router/go_router.dart';
 
 GoRouter routes = GoRouter(
@@ -20,6 +21,10 @@ GoRouter routes = GoRouter(
       builder: (context, state) => NoteEdit(
         note: state.extra as NoteModel,
       ),
-    )
+    ),
+    GoRoute(
+      path: '/conf',
+      builder: (context, state) => const ServerConf(),
+    ),
   ],
 );

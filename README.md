@@ -1,16 +1,15 @@
 # day_analyzer
 
-A new Flutter project.
+a Day scheduler
 
-## Getting Started
+## Quality of life improvements (Needs to implement)
 
-This project is a starting point for a Flutter application.
+- Add a Note and automatically add in the Provider List for All Notes
+- Notifications
+- Icon and Splash Screen
+- Search
 
-A few resources to get you started if this is your first Flutter project:
+## Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Create and edit notes
+- Easy day management
