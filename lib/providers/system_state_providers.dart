@@ -28,6 +28,7 @@ final staticWeekStartDayProvider = StateProvider(
 final notesByWeekStartDayProvider = Provider(
   (ref) {
     AsyncValue notes = ref.watch(apiGetAllNotesProvider);
+    List<NoteModel> recentAdded = ref.watch(notesAddedRecentlyProvider);
     // AsyncValue notes = ref.watch(allNotesProvider);
 
     return notes.whenData(
@@ -37,12 +38,30 @@ final notesByWeekStartDayProvider = Provider(
         for (var index = 0; index < 7; index = index + 1) {
           List<NoteModel> auxiliar = List.empty(growable: true);
           notesByDayMap[index] = auxiliar;
+          if (recentAdded.isNotEmpty) {
+            for (var recentAddedIndex = 0;
+                recentAddedIndex < recentAdded.length;
+                recentAddedIndex = recentAddedIndex + 1) {
+              var auxiliarCompare =
+                  recentAdded[recentAddedIndex].date!.difference(
+                        weekStart.add(
+                          Duration(days: index),
+                        ),
+                      );
+              if (auxiliarCompare < const Duration(days: 1) &&
+                  auxiliarCompare > const Duration(days: 0)) {
+                notesByDayMap[index]!.add(recentAdded[recentAddedIndex]);
+              }
+            }
+          }
           for (var allNoteIndex = 0;
               allNoteIndex < allNotes.length;
               allNoteIndex = allNoteIndex + 1) {
-            var auxiliarCompare = allNotes[allNoteIndex]
-                .date!
-                .difference(weekStart.add(Duration(days: index)));
+            var auxiliarCompare = allNotes[allNoteIndex].date!.difference(
+                  weekStart.add(
+                    Duration(days: index),
+                  ),
+                );
             if (auxiliarCompare < const Duration(days: 1) &&
                 auxiliarCompare > const Duration(days: 0)) {
               notesByDayMap[index]!.add(allNotes[allNoteIndex]);
@@ -53,6 +72,13 @@ final notesByWeekStartDayProvider = Provider(
         return notesByDayMap;
       },
     );
+  },
+);
+
+final notesAddedRecentlyProvider = StateProvider(
+  (ref) {
+    List<NoteModel> recent = List.empty(growable: true);
+    return recent;
   },
 );
 

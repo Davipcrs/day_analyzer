@@ -1,4 +1,3 @@
-import 'package:day_analyzer/models/note.dart';
 import 'package:day_analyzer/providers/api_providers.dart';
 import 'package:day_analyzer/providers/note_notifiers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -33,6 +32,8 @@ final apiUpdateNoteProvider =
     AsyncNotifierProvider.autoDispose<UpdateNoteNotifier, void>(
   UpdateNoteNotifier.new,
 );
+
+
 
 /*
 final allNotesProvider = StateProvider(

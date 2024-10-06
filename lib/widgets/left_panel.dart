@@ -90,6 +90,7 @@ class _CustomLeftPanelState extends ConsumerState<CustomLeftPanel> {
                 ref.invalidate(apiGetAllNotesProvider);
                 ref.invalidate(apiGetNoteByIdProvider);
                 ref.invalidate(apiGetNotesByDayProvider);
+                ref.invalidate(notesAddedRecentlyProvider);
               },
               child: const Text("Refresh"),
             ),

@@ -19,6 +19,7 @@ class _NoteEditState extends ConsumerState<NoteEdit> {
   TextEditingController mainText = TextEditingController();
 
   TextEditingController secondaryMDText = TextEditingController();
+  String isLocalNote = '';
 
   late DateTime date;
 
@@ -30,6 +31,10 @@ class _NoteEditState extends ConsumerState<NoteEdit> {
     mainText.text = widget.note.str_text;
     secondaryMDText.text = widget.note.str_md_text;
     date = widget.note.date!;
+    if (widget.note.id_note! == 0) {
+      isLocalNote =
+          'Essa Nota é local, por gentileza, volte para a página inicial e clique em Refresh para puder atualizar.';
+    }
   }
 
   void setDate(newDate) {

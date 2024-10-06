@@ -1,4 +1,5 @@
 import 'package:day_analyzer/providers/note_providers.dart';
+import 'package:day_analyzer/providers/system_state_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -22,6 +23,7 @@ class OptionsMiniBar extends ConsumerWidget {
             ref.invalidate(apiGetAllNotesProvider);
             ref.invalidate(apiGetNoteByIdProvider);
             ref.invalidate(apiGetNotesByDayProvider);
+            ref.invalidate(notesAddedRecentlyProvider);
           },
           icon: const Icon(Icons.refresh_sharp),
         ),

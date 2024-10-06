@@ -1,5 +1,6 @@
 import 'package:day_analyzer/models/note.dart';
 import 'package:day_analyzer/providers/note_providers.dart';
+import 'package:day_analyzer/providers/system_state_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -116,12 +117,21 @@ class _NoteAddNewState extends ConsumerState<NoteAddNew> {
                           ref
                               .read(apiCreateNoteProvider.notifier)
                               .addNote(model);
+
+                          // This code add the newly added Note to a provider thats will be consumed in
+                          // the allNotes provider.
+                          List<NoteModel> auxilarAdded =
+                              ref.watch(notesAddedRecentlyProvider);
+                          auxilarAdded.add(model);
+                          ref.read(notesAddedRecentlyProvider.notifier).state =
+                              auxilarAdded;
                           /*
                           var auxiliar =
                               ref.watch(allNotesProvider) as List<NoteModel>;
                           auxiliar.add(model);
                           ref.read(allNotesProvider.notifier).state = auxiliar;
                           */
+                          Future.delayed(Duration(milliseconds: 100));
                           context.go('/');
                         },
                         child: const Text('Add'),
