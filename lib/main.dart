@@ -1,3 +1,4 @@
+import 'package:day_analyzer/providers/api_providers.dart';
 import 'package:day_analyzer/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,8 +11,20 @@ void main() {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerStatefulWidget {
   const MyApp({super.key});
+
+  @override
+  ConsumerState<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends ConsumerState<MyApp> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    readServerIp(ref);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

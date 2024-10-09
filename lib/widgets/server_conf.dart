@@ -10,6 +10,8 @@ class ServerConf extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     TextEditingController controllerHost = TextEditingController();
     TextEditingController controllerPort = TextEditingController();
+    controllerHost.text = ref.watch(apiHost);
+    controllerPort.text = ref.watch(apiPorts).toString();
     return Scaffold(
       body: Center(
         child: Padding(
@@ -62,10 +64,15 @@ class ServerConf extends ConsumerWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: ElevatedButton(
                         onPressed: () {
+                          saveServerIp(
+                            controllerHost.text,
+                            int.parse(controllerPort.text),
+                          );
                           ref.read(apiHost.notifier).state =
                               controllerHost.text;
                           ref.read(apiPorts.notifier).state =
                               int.parse(controllerPort.text);
+
                           context.go('/');
                         },
                         child: const Text('OK'),

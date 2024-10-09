@@ -32,7 +32,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+    
+  flutter_secure_storage: ^9.2.2
   flutter_riverpod: ^2.5.1 # MIT 
   go_router: ^14.2.7 # BSD-3-Clause
   fixnum: ^1.1.0 # BSD-3-Clause
