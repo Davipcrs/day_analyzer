@@ -29,7 +29,7 @@ class _MyAppState extends ConsumerState<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Flutter Demo',
+      title: 'Day Analyzer',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
             seedColor: Colors.lightBlue, brightness: Brightness.light),

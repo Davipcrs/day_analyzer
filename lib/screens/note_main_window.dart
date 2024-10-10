@@ -80,7 +80,7 @@ class _NoteMainWindowState extends ConsumerState<NoteMainWindow> {
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.only(
-                            top: 8.0, right: 24.0, left: 24.0, bottom: 8.0),
+                            top: 8.0, right: 32.0, left: 32.0, bottom: 8.0),
                         child: Container(
                           decoration: BoxDecoration(
                             color:
