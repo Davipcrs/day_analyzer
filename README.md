@@ -4,7 +4,6 @@ a Day scheduler
 
 ## Quality of life improvements (Needs to implement)
 
-- Add a Note and automatically add in the Provider List for All Notes
 - Notifications
 - Icon and Splash Screen
 - Search
@@ -13,3 +12,7 @@ a Day scheduler
 
 - Create and edit notes
 - Easy day management
+
+## Credits
+
+<a href="https://www.flaticon.com/free-icons/calendar" title="calendar icons">Calendar icons created by Freepik - Flaticon</a>

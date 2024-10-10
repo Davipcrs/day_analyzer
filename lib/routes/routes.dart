@@ -3,11 +3,16 @@ import 'package:day_analyzer/screens/main_window.dart';
 import 'package:day_analyzer/widgets/note_add_new.dart';
 import 'package:day_analyzer/widgets/note_edit.dart';
 import 'package:day_analyzer/widgets/server_conf.dart';
+import 'package:day_analyzer/widgets/splash.dart';
 import 'package:go_router/go_router.dart';
 
 GoRouter routes = GoRouter(
-  initialLocation: '/',
+  initialLocation: '/splash',
   routes: [
+    GoRoute(
+      path: '/splash',
+      builder: (context, state) => const Splash(),
+    ),
     GoRoute(
       path: '/',
       builder: (context, state) => const MainWindow(),
